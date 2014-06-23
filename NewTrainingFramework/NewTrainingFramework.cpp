@@ -57,7 +57,7 @@ void Draw ( ESContext *esContext )
 {
 	//FBO
 	// set rendering destination to FBO
-
+	glViewport(0, 0, 1024, 1024);
 	glBindFramebuffer(GL_FRAMEBUFFER, fboId);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	CCamera reflectCam;
@@ -178,6 +178,7 @@ void Draw ( ESContext *esContext )
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	glViewport(0, 0, 960, 720);
 	for(int i=0; i<NUMBER_OBJECT; i++)
 	{
 		glUseProgram(objectList[i].m_Shaders->program);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="NewTrainingFramework"
 	ProjectGUID="{FC024EC8-32F4-4657-A2CB-14D2B3A931F8}"
 	RootNamespace="NewTrainingFramework"
@@ -18,7 +18,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug-Nvidia|Win32"
-			OutputDirectory="$(SolutionDir)\BIN-ATI"
+			OutputDirectory="$(SolutionDir)\BIN-Nvidia"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="2"
