@@ -1,0 +1,66 @@
+﻿Build started 3/31/2013 3:50:27 PM.
+     1>Project "d:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\NewTrainingFramework\NewTrainingFramework.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug-Nvidia\NewTrainingFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Include\Nvidia /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug-Nvidia\NewTrainingFramework.pch" /Fo"Debug-Nvidia\\" /Fd"Debug-Nvidia\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Include\Nvidia /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug-Nvidia\NewTrainingFramework.pch" /Fo"Debug-Nvidia\\" /Fd"Debug-Nvidia\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt CModel.cpp NewTrainingFramework.cpp Shaders.cpp
+         Shaders.cpp
+         NewTrainingFramework.cpp
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\newtrainingframework.cpp(105): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+         CModel.cpp
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(29): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(57): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(66): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(68): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(70): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(72): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(74): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(76): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(81): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(83): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(91): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>d:\gamecontest_day2\demo_nfg\3dtrainingframework_2010\3dtrainingframework_2010\newtrainingframework\cmodel.cpp(93): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+         Generating Code...
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug-Nvidia\NewTrainingFramework.exe.embed.manifest.res" Debug-Nvidia\NewTrainingFramework_manifest.rc 
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\NewTrainingFramework.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Lib\Nvidia libEGL.lib libGLESv2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug-Nvidia\NewTrainingFramework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\BIN-Nvidia\NewTrainingFramework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\NewTrainingFramework.lib" /MACHINE:X86 "Debug-Nvidia\NewTrainingFramework.exe.embed.manifest.res"
+         "Debug-Nvidia\CModel.obj"
+         "Debug-Nvidia\NewTrainingFramework.obj"
+         "Debug-Nvidia\Shaders.obj"
+         "Debug-Nvidia\stdafx.obj"
+         "D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\BIN-Nvidia\UtilitiesD.lib"
+       Manifest:
+         Deleting file "Debug-Nvidia\NewTrainingFramework.exe.embed.manifest".
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug-Nvidia\NewTrainingFramework.exe.embed.manifest" /manifest "Debug-Nvidia\NewTrainingFramework.exe.intermediate.manifest"
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug-Nvidia\NewTrainingFramework.exe.embed.manifest.res" Debug-Nvidia\NewTrainingFramework_manifest.rc 
+       LinkEmbedManifest:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\NewTrainingFramework.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Lib\Nvidia libEGL.lib libGLESv2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug-Nvidia\NewTrainingFramework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\BIN-Nvidia\NewTrainingFramework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\NewTrainingFramework.lib" /MACHINE:X86 "Debug-Nvidia\NewTrainingFramework.exe.embed.manifest.res"
+         "Debug-Nvidia\CModel.obj"
+         "Debug-Nvidia\NewTrainingFramework.obj"
+         "Debug-Nvidia\Shaders.obj"
+         "Debug-Nvidia\stdafx.obj"
+         "D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\BIN-Nvidia\UtilitiesD.lib"
+         NewTrainingFramework.vcxproj -> D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\NewTrainingFramework.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug-Nvidia\NewTrainingFramework.unsuccessfulbuild".
+         Touching "Debug-Nvidia\NewTrainingFramework.lastbuildstate".
+     1>Done Building Project "d:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\NewTrainingFramework\NewTrainingFramework.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.93

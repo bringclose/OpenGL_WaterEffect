@@ -1,0 +1,32 @@
+﻿Build started 3/31/2013 3:50:26 PM.
+     1>Project "d:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\Utilities\Utilities.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug-Nvidia\Utilities.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Include\Nvidia /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug-Nvidia\Utilities.pch" /Fo"Debug-Nvidia\\" /Fd"Debug-Nvidia\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\Include\Nvidia /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug-Nvidia\Utilities.pch" /Fo"Debug-Nvidia\\" /Fd"Debug-Nvidia\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt esShader.cpp esUtil.cpp esUtil_win.cpp Math.cpp TGA.cpp
+         TGA.cpp
+         Math.cpp
+         esUtil_win.cpp
+         esUtil.cpp
+         esShader.cpp
+         Generating Code...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(1151,5): warning MSB8012: TargetPath(D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\Utilities.lib) does not match the Library's OutputFile property value (D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\BIN-Nvidia\UtilitiesD.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(1153,5): warning MSB8012: TargetName(Utilities) does not match the Library's OutputFile property value (UtilitiesD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\UtilitiesD.lib" /NOLOGO "Debug-Nvidia\esShader.obj"
+         "Debug-Nvidia\esUtil.obj"
+         "Debug-Nvidia\esUtil_win.obj"
+         "Debug-Nvidia\Math.obj"
+         "Debug-Nvidia\stdafx.obj"
+         "Debug-Nvidia\TGA.obj"
+         Utilities.vcxproj -> D:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\\BIN-Nvidia\Utilities.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug-Nvidia\Utilities.unsuccessfulbuild".
+         Touching "Debug-Nvidia\Utilities.lastbuildstate".
+     1>Done Building Project "d:\Gamecontest_Day2\Demo_NFG\3DTrainingFramework_2010\3DTrainingFramework_2010\Utilities\Utilities.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.06
