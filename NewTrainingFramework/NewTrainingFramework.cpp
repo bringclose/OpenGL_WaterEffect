@@ -31,6 +31,7 @@ GLfloat fresnelPower = 0;
 GLuint textureId;
 GLuint rboId;
 GLuint fboId;
+GLuint mDepthTexFBO;
 
 float moveStepLenght = 100.0f;
 float rotateAngle = 1.0f;
@@ -553,53 +554,30 @@ void InitObjects()
 
 void InitFBO(void)
 {
-	// create a texture object
-	glGenTextures(1, &textureId);
-	glBindTexture(GL_TEXTURE_2D, textureId);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0,
-				 GL_RGBA, GL_UNSIGNED_BYTE, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	// create a renderbuffer object to store depth info
-	glGenRenderbuffers(1, &rboId);
-	glBindRenderbuffer(GL_RENDERBUFFER, rboId);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT,
-						  1024, 1024);
-	glBindRenderbuffer(GL_RENDERBUFFER, 0);
-
-	// create a framebuffer object
+	// Create FrameBuffer
 	glGenFramebuffers(1, &fboId);
 	glBindFramebuffer(GL_FRAMEBUFFER, fboId);
 
-	// attach the texture to FBO color attachment point
-	glFramebufferTexture2D(GL_FRAMEBUFFER,        // 1. fbo target: GL_FRAMEBUFFER 
-						   GL_COLOR_ATTACHMENT0,  // 2. attachment point
-						   GL_TEXTURE_2D,         // 3. tex target: GL_TEXTURE_2D
-						   textureId,             // 4. tex ID
-						   0);                    // 5. mipmap level: 0(base)
+	glGenTextures(1, &textureId);
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureId, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// attach the renderbuffer to depth attachment point
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER,      // 1. fbo target: GL_FRAMEBUFFER
-							  GL_DEPTH_ATTACHMENT, // 2. attachment point
-							  GL_RENDERBUFFER,     // 3. rbo target: GL_RENDERBUFFER
-							  rboId);              // 4. rbo ID
+	glGenTextures(1, &mDepthTexFBO);
+	glBindTexture(GL_TEXTURE_2D, mDepthTexFBO);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, NULL);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, mDepthTexFBO, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// check FBO status
-	GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-	if(status != GL_FRAMEBUFFER_COMPLETE)
-	{
-		printf("Error");
-	}
-	else
-	{
-		printf("\n INIT SSF");
-	}
-
-	// switch back to window-system-provided framebuffer
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	//cheat water
