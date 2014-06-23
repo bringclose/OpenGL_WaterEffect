@@ -236,7 +236,7 @@ void Draw ( ESContext *esContext )
 		{
 			glActiveTexture(GL_TEXTURE0 + textureUnit);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, objectList[i].m_TextureCube->m_TextureID);
-			glUniform1i(objectList[i].m_Shaders->textureCubeUniform, 0);
+			glUniform1i(objectList[i].m_Shaders->textureCubeUniform, textureUnit);
 
 			textureUnit++;
 		}
@@ -248,7 +248,7 @@ void Draw ( ESContext *esContext )
 			{
 				glActiveTexture(GL_TEXTURE0 + textureUnit);
 				glBindTexture(GL_TEXTURE_2D, objectList[i].m_TextureList[j].m_TextureID);
-				glUniform1i(objectList[i].m_Shaders->textureUniform[j], j);
+				glUniform1i(objectList[i].m_Shaders->textureUniform[j], textureUnit);
 
 				textureUnit++;
 			}
@@ -474,13 +474,15 @@ void InitResource()
 	textureList[4].CreateTexture("../Resources/Textures/Dirt.tga");
 	textureList[5].CreateTexture("../Resources/Textures/RockNormalMap.tga");
 	textureList[6].CreateTexture("../Resources/Textures/DisplacementMap.tga");
-	textureList[7].CreateTexture("../Resources/Textures/WaterBottom.tga");
+	//textureList[7].CreateTexture("../Resources/Textures/WaterBottom.tga");
+
+	textureList[7].CreateTexture("../Resources/Textures/WaterNormal.tga");
 }
 
 void InitObjects()
 {
-	light.lightPos = Vector3(0.0f, 0.0f, 0.0f);
-	light.lightColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	light.lightPos = Vector3(0.0f, 10.0f, 0.0f);
+	light.lightColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 
 	//Init beginning stage of camera
 	myCamera.Init();
@@ -544,9 +546,9 @@ void InitObjects()
 
 	objectList[3].m_NoTexture2D = 3;
 	objectList[3].m_TextureList = new CTexture[3];
-	objectList[3].m_TextureList[0] = textureList[5];
-	objectList[3].m_TextureList[1] = textureList[6];
-	objectList[3].m_TextureList[2] = textureList[7];
+	objectList[3].m_TextureList[0] = textureList[3];	//rock
+	objectList[3].m_TextureList[1] = textureList[6];	//displacement	
+	objectList[3].m_TextureList[2] = textureList[7];	//waternormal
 
 	objectList[3].pos = Vector3(-50.0f, -20.0f, 50.0f);
 	objectList[3].rot = Vector3(PI, PI/2, 0.0f);
@@ -582,5 +584,5 @@ void InitFBO(void)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	//cheat water
-	objectList[3].m_TextureList[0].m_TextureID = textureId;
+	//objectList[3].m_TextureList[0].m_TextureID = textureId;
 }

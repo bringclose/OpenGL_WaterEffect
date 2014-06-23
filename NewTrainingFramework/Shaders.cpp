@@ -21,9 +21,9 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 	//finding location of uniforms / attributes
 	positionAttribute = glGetAttribLocation(program, "a_posL");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
-	normalAttribute = glGetAttribLocation(program, "a_normal");
-	binormalAttribute = glGetAttribLocation(program, "a_binormal");
-	tangentAttribute = glGetAttribLocation(program, "a_tangent");
+	normalAttribute = glGetAttribLocation(program, "a_normalL");
+	binormalAttribute = glGetAttribLocation(program, "a_bitangentL");
+	tangentAttribute = glGetAttribLocation(program, "a_tangentL");
 
 	maWorldUniform = glGetUniformLocation(program, "u_maWorld");	//world matrix
 	wvpUniform = glGetUniformLocation(program, "u_mvp");			//MVP matrix
