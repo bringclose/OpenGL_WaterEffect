@@ -24,6 +24,8 @@ public:
 
 	GLint textureUniform[MAX_TEXTURE_UNIT];
 	GLint textureCubeUniform;
+	GLint u_time;
+	GLint u_dMax;
 
 	int Init(char * fileVertexShader, char * fileFragmentShader);
 	~Shaders();

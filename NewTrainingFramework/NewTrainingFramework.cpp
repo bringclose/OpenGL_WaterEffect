@@ -12,6 +12,7 @@
 #include "Shaders.h"
 #include "Camera.h"
 #include "Texture.h"
+#include "Globals.h"
 
 #define NUMBER_OBJECT		4
 #define NUMBER_TEXTURE2D	8
@@ -26,7 +27,7 @@ CTexture textureList[NUMBER_TEXTURE2D];
 CTextureCube textureCube;
 Shaders shaderList[NUMBER_OBJECT];
 
-GLfloat fresnelPower = 0;
+GLfloat fresnelPower = 1.0;
 //FBO
 GLuint textureId;
 GLuint rboId;
@@ -41,6 +42,8 @@ bool WasKeyPressed(short);
 void InitObjects(void);
 void InitResource(void);
 void InitFBO(void);
+
+float Globals::totalTime=0;
 
 int Init ( ESContext *esContext )
 {
@@ -275,8 +278,21 @@ void Draw ( ESContext *esContext )
 		{
 			glUniform1f(objectList[i].m_Shaders->fresnelPowerUniform, fresnelPower);
 		}
+
+		//time
+		if(objectList[i].m_Shaders->u_time!=-1)
+		{
+			glUniform1f(objectList[i].m_Shaders->u_time,Globals::totalTime);
+		}
+		//u_dMax
+		if(objectList[i].m_Shaders->u_dMax!=-1)
+		{
+			glUniform1f(objectList[i].m_Shaders->u_dMax,0.1f);
+		}
 		
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		//using IBO
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, objectList[i].m_Model->m_indexBuffer);
@@ -293,6 +309,7 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
+	Globals::totalTime+=deltaTime;
 	myCamera.Update(deltaTime);
 
 	for(int i=0; i<NUMBER_OBJECT; i++)
@@ -481,8 +498,8 @@ void InitResource()
 
 void InitObjects()
 {
-	light.lightPos = Vector3(0.0f, 10.0f, 0.0f);
-	light.lightColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	light.lightPos = Vector3(0.0f, 0.0f, 0.0f);
+	light.lightColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	//Init beginning stage of camera
 	myCamera.Init();

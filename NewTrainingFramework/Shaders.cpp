@@ -33,6 +33,7 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 	fresnelPowerUniform = glGetUniformLocation(program, "u_fresnelPower"); //for water effect
 
 	textureCubeUniform = glGetUniformLocation(program, "u_textureCube");
+	u_time=glGetUniformLocation(program,"u_time");
 
 	char textureUniformString[]="u_texture0";
 	int length=strlen(textureUniformString);

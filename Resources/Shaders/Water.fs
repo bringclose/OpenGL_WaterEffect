@@ -8,7 +8,10 @@ uniform sampler2D u_texture1;//displacement
 uniform sampler2D u_texture2;//waternormal
 uniform samplerCube u_textureCube;
 uniform vec3 u_lightPos;
-uniform vec3  u_lightColor;
+uniform vec4 u_lightColor;
+uniform float u_time;
+uniform float u_dMax;
+uniform float u_fresnelPower;
 
 uniform vec3 u_camPos;
 varying vec3 v_posW;
@@ -33,5 +36,13 @@ void main()
     vec3 normalW = normalize(TBN * (2.0 * normal - 1.0));
     vec3 lightDirection = normalize(v_posW - u_lightPos);
     float diffuse = max(0.0, dot(lightDirection, normalW));
-    gl_FragColor = vec4(diffuse * (colorReflection.rgb + u_lightColor), colorReflection.a);    
+    //vec4 colorWater = vec4((diffuse * (colorReflection + u_lightColor)).rgb, colorReflection.a); 
+    vec4 colorWater = vec4(diffuse * colorReflection.rgb * u_lightColor.rgb, colorReflection.a) ;
+    //Displacement
+	vec2 disp = texture2D(u_texture1, vec2(v_uv.x, v_uv.y + u_time)).rg;
+	vec2 offset = (2.0 * disp - 1.0) * u_dMax;
+	vec2 Tex_coords_displaced = v_uv + offset;
+	vec4 rockColor = texture2D (u_texture0, Tex_coords_displaced);
+	vec4 blendRockWater = mix(colorWater, rockColor, u_fresnelPower);
+	gl_FragColor = colorWater;
 }

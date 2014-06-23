@@ -25,7 +25,7 @@
 #define POSITION_OFFSET	0
 #define NORMAL_OFFSET	(char*)0 + sizeof(Vector3)*1
 #define BINORMAL_OFFSET	(char*)0 + sizeof(Vector3)*2
-#define TANGENT_OFFSET	(char*)0 + sizeof(Vector3)*2
+#define TANGENT_OFFSET	(char*)0 + sizeof(Vector3)*3
 #define TEXCOORD_OFFSET	(char*)0 + sizeof(Vector3)*4
 
 typedef struct
@@ -39,4 +39,6 @@ class Globals
 public:
 	static const int screenWidth = 960;
 	static const int screenHeight = 720;
+
+	static float totalTime;
 };
