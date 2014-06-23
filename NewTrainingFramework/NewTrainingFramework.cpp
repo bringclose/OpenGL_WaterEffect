@@ -27,7 +27,7 @@ CTexture textureList[NUMBER_TEXTURE2D];
 CTextureCube textureCube;
 Shaders shaderList[NUMBER_OBJECT];
 
-GLfloat fresnelPower = 1.0;
+GLfloat fresnelPower = 2.0;
 //FBO
 GLuint textureId;
 GLuint rboId;
@@ -287,7 +287,7 @@ void Draw ( ESContext *esContext )
 		//u_dMax
 		if(objectList[i].m_Shaders->u_dMax!=-1)
 		{
-			glUniform1f(objectList[i].m_Shaders->u_dMax,0.1f);
+			glUniform1f(objectList[i].m_Shaders->u_dMax,0.025f);
 		}
 		
 		glEnable(GL_DEPTH_TEST);
@@ -489,11 +489,12 @@ void InitResource()
 	textureList[2].CreateTexture("../Resources/Textures/Grass.tga");
 	textureList[3].CreateTexture("../Resources/Textures/Rock.tga");
 	textureList[4].CreateTexture("../Resources/Textures/Dirt.tga");
-	textureList[5].CreateTexture("../Resources/Textures/RockNormalMap.tga");
+	textureList[5].CreateTexture("../Resources/Textures/Rock_Normal.tga");
 	textureList[6].CreateTexture("../Resources/Textures/DisplacementMap.tga");
 	//textureList[7].CreateTexture("../Resources/Textures/WaterBottom.tga");
 
 	textureList[7].CreateTexture("../Resources/Textures/WaterNormal.tga");
+	//textureList[8].CreateTexture("../Resources/Textures/Rock_Normal.tga");
 }
 
 void InitObjects()
@@ -548,8 +549,8 @@ void InitObjects()
 
 	objectList[2].m_NoTexture2D = 2;
 	objectList[2].m_TextureList = new CTexture[2];
-	objectList[2].m_TextureList[0] = textureList[3];
-	objectList[2].m_TextureList[1] = textureList[5];
+	objectList[2].m_TextureList[0] = textureList[3];	//rock
+	objectList[2].m_TextureList[1] = textureList[5];	//rock_normal
 
 	objectList[2].pos = Vector3(-30.0f, -10.0f, 50.0f);
 	objectList[2].rot = Vector3(0.0f, 0.0f, 0.0f);

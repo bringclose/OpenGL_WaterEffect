@@ -20,6 +20,7 @@ void main()
 	
 	v_posW = (u_maWorld * posL).xyz;
 	v_normalW = normalize((u_maWorld * vec4(a_normalL, 0.0)).xyz);
+	//v_normalW = a_tangentL;
 	v_tangentW = normalize((u_maWorld * vec4(a_tangentL, 0.0)).xyz);
 	v_bitangentW = normalize((u_maWorld * vec4(a_bitangentL, 0.0)).xyz);
 	v_uv = a_uv;
