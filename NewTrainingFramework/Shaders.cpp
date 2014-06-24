@@ -34,6 +34,7 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 
 	textureCubeUniform = glGetUniformLocation(program, "u_textureCube");
 	u_time=glGetUniformLocation(program,"u_time");
+	u_dMax=glGetUniformLocation(program,"u_dMax");
 
 	char textureUniformString[]="u_texture0";
 	int length=strlen(textureUniformString);
