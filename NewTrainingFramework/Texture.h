@@ -12,4 +12,5 @@ public:
 	GLuint m_TextureID;
 
 	void CreateTexture(char*);
+	void CreateTextureL(char*);
 };
