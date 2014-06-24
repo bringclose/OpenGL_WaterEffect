@@ -15,7 +15,7 @@
 #include "Globals.h"
 
 #define NUMBER_OBJECT		4
-#define NUMBER_TEXTURE2D	8
+#define NUMBER_TEXTURE2D	9
 
 CCamera myCamera;
 Matrix maWVP[NUMBER_OBJECT];
@@ -287,7 +287,7 @@ void Draw ( ESContext *esContext )
 		//u_dMax
 		if(objectList[i].m_Shaders->u_dMax!=-1)
 		{
-			glUniform1f(objectList[i].m_Shaders->u_dMax,0.025f);
+			glUniform1f(objectList[i].m_Shaders->u_dMax,0.05);
 		}
 		
 		glEnable(GL_DEPTH_TEST);
@@ -494,7 +494,7 @@ void InitResource()
 	//textureList[7].CreateTexture("../Resources/Textures/WaterBottom.tga");
 
 	textureList[7].CreateTexture("../Resources/Textures/WaterNormal.tga");
-	//textureList[8].CreateTexture("../Resources/Textures/Rock_Normal.tga");
+	textureList[8].CreateTexture("../Resources/Textures/Gradient.tga");
 }
 
 void InitObjects()
@@ -562,11 +562,12 @@ void InitObjects()
 
 	objectList[3].m_TextureCube = &textureCube;
 
-	objectList[3].m_NoTexture2D = 3;
-	objectList[3].m_TextureList = new CTexture[3];
+	objectList[3].m_NoTexture2D = 4;
+	objectList[3].m_TextureList = new CTexture[4];
 	objectList[3].m_TextureList[0] = textureList[3];	//rock
 	objectList[3].m_TextureList[1] = textureList[6];	//displacement	
 	objectList[3].m_TextureList[2] = textureList[7];	//waternormal
+	objectList[3].m_TextureList[3] = textureList[8];	//HeightMap
 
 	objectList[3].pos = Vector3(-50.0f, -20.0f, 50.0f);
 	objectList[3].rot = Vector3(PI, PI/2, 0.0f);
