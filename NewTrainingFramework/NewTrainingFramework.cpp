@@ -494,7 +494,7 @@ void InitResource()
 	//textureList[7].CreateTexture("../Resources/Textures/WaterBottom.tga");
 
 	textureList[7].CreateTexture("../Resources/Textures/WaterNormal.tga");
-	textureList[8].CreateTexture("../Resources/Textures/Gradient.tga");
+	textureList[8].CreateTextureL("../Resources/Textures/Gradient.tga");
 }
 
 void InitObjects()
