@@ -328,7 +328,7 @@ void Update ( ESContext *esContext, float deltaTime )
 		objectList[i].Update(deltaTime);
 		if(i == 2)
 		{
-			objectList[i].Rotate(Vector3(0.00, 0.03, 0.0));
+			//objectList[i].Rotate(Vector3(0.00, 0.03, 0.0));
 		}
 		if(i ==3)
 		{
@@ -516,7 +516,7 @@ void InitResource()
 	textureList[8].CreateTextureL("../Resources/Textures/Gradient.tga");
 	textureList[9].CreateTextureL("../Resources/Textures/Pool.tga");
 	textureList[10].CreateTextureL("../Resources/Textures/PoolNormal.tga");
-	textureList[11].CreateTexture("../Resources/Textures/PoolNormal.tga");
+	textureList[11].CreateTexture(""); //using FBO for water effect
 }
 
 void InitObjects()
@@ -570,10 +570,11 @@ void InitObjects()
 
 	objectList[2].m_TextureCube = NULL;
 
-	objectList[2].m_NoTexture2D = 2;
-	objectList[2].m_TextureList = new CTexture[2];
+	objectList[2].m_NoTexture2D = 3;
+	objectList[2].m_TextureList = new CTexture[3];
 	objectList[2].m_TextureList[0] = textureList[3];	//rock
 	objectList[2].m_TextureList[1] = textureList[5];	//rock_normal
+	objectList[2].m_TextureList[2] = textureList[11];	//water effect
 
 	objectList[2].pos = Vector3(-30.0f, -10.0f, 50.0f);
 	objectList[2].rot = Vector3(0.0f, 0.0f, 0.0f);
@@ -599,7 +600,7 @@ void InitObjects()
 	objectList[3].m_TextureList[3] = textureList[8];	//HeightMap
 	objectList[3].m_TextureList[4] = textureList[9];	//Pool
 	objectList[3].m_TextureList[5] = textureList[10];	//PoolNormal
-	objectList[3].m_TextureList[6] = textureList[11];	//PoolNormal
+	objectList[3].m_TextureList[6] = textureList[11];	//water effect
 
 	objectList[3].pos = Vector3(-50.0f, -20.0f, 50.0f);
 	objectList[3].rot = Vector3(PI, PI/2, 0.0f);
@@ -616,8 +617,8 @@ void InitFBO(void)
 	glBindTexture(GL_TEXTURE_2D, textureId);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureId, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -636,5 +637,5 @@ void InitFBO(void)
 
 	//cheat water
 	//objectList[3].m_TextureList[6].m_TextureID = textureId;
-	objectList[1].m_TextureList[5].m_TextureID = textureId;
+	objectList[2].m_TextureList[2].m_TextureID = textureId;
 }

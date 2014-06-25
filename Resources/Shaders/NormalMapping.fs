@@ -2,6 +2,8 @@ precision mediump float;
 
 uniform sampler2D u_texture0;	//Rock
 uniform sampler2D u_texture1;	//RockNormalMap
+uniform sampler2D u_texture2;	//water effect
+
 uniform vec3 u_lightPos;
 uniform vec4 u_lightColor;
 uniform vec3 u_camPos;
@@ -26,11 +28,13 @@ void main()
     vec3 reflectVector = normalize((reflect(lightDirection, normalW)));
     vec4 SpecularComponent = pow(max(dot(reflectVector,toEye),0.0),20.0) * u_lightColor;//LightSpecularColor;
     float diffuse = max(0.0, dot(lightDirection, normalW));
-    vec3 rockTexture = texture2D(u_texture0, v_uv).xyz;
+    vec3 rockTexture = texture2D(u_texture0, v_uv/1.1).xyz;
     //float diffuse = max(dot(normalW, lightDirection), 0.0);
     //vec4 colorWater = vec4((diffuse * (colorReflection + u_lightColor)).rgb, colorReflection.a); 
     vec4 colorRock = vec4(diffuse * rockTexture.rgb * u_lightColor.rgb, 1.0);
     //vec4 colorRock = vec4((/*ambientColor * */weight + diffuse * (1.0 - weight) * vec4(rockTexture, 1.0) + SpecularComponent).xyz, 1.0);
-    
+    vec4 waterEff = texture2D(u_texture2, v_uv);
+    vec4 blendRockWater = mix(colorRock, waterEff, 0.5);
+    //gl_FragColor = colorRock;
     gl_FragColor = colorRock;
 }
