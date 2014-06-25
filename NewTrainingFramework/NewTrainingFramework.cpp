@@ -15,7 +15,7 @@
 #include "Globals.h"
 
 #define NUMBER_OBJECT		4
-#define NUMBER_TEXTURE2D	9
+#define NUMBER_TEXTURE2D	12
 
 CCamera myCamera;
 Matrix maWVP[NUMBER_OBJECT];
@@ -27,7 +27,7 @@ CTexture textureList[NUMBER_TEXTURE2D];
 CTextureCube textureCube;
 Shaders shaderList[NUMBER_OBJECT];
 
-GLfloat fresnelPower = 2.0;
+GLfloat fresnelPower = 1.0;
 //FBO
 GLuint textureId;
 GLuint rboId;
@@ -69,7 +69,7 @@ void Draw ( ESContext *esContext )
 	reflectCam.rot.x = -reflectCam.rot.x;
 	//Matrix maWVPReflect = objectList[i].maWorld * myCamera.maView * myCamera.maProjection;
 	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	for(int i=0; i<1; i++)
+	for(int i=3; i<4; i++)
 	{
 		glUseProgram(objectList[i].m_Shaders->program);
 
@@ -126,7 +126,7 @@ void Draw ( ESContext *esContext )
 		{
 			glActiveTexture(GL_TEXTURE0 + textureUnit);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, objectList[i].m_TextureCube->m_TextureID);
-			glUniform1i(objectList[i].m_Shaders->textureCubeUniform, 0);
+			glUniform1i(objectList[i].m_Shaders->textureCubeUniform, textureUnit);
 
 			textureUnit++;
 		}
@@ -138,7 +138,7 @@ void Draw ( ESContext *esContext )
 			{
 				glActiveTexture(GL_TEXTURE0 + textureUnit);
 				glBindTexture(GL_TEXTURE_2D, objectList[i].m_TextureList[j].m_TextureID);
-				glUniform1i(objectList[i].m_Shaders->textureUniform[j], j);
+				glUniform1i(objectList[i].m_Shaders->textureUniform[j], textureUnit);
 
 				textureUnit++;
 			}
@@ -148,7 +148,6 @@ void Draw ( ESContext *esContext )
 		if(objectList[i].m_Shaders->cameraPosUniform != -1)
 		{
 			glUniform3fv(objectList[i].m_Shaders->cameraPosUniform, 1, &myCamera.pos.x);
-			//glUniform3fv(objectList[i].m_Shaders->cameraPosUniform, 1, &reflectCam.pos.x);
 		}
 
 		//transfer light's info to Shader
@@ -166,8 +165,21 @@ void Draw ( ESContext *esContext )
 		{
 			glUniform1f(objectList[i].m_Shaders->fresnelPowerUniform, fresnelPower);
 		}
+
+		//time
+		if(objectList[i].m_Shaders->u_time!=-1)
+		{
+			glUniform1f(objectList[i].m_Shaders->u_time,Globals::totalTime);
+		}
+		//u_dMax
+		if(objectList[i].m_Shaders->u_dMax!=-1)
+		{
+			glUniform1f(objectList[i].m_Shaders->u_dMax,0.05);
+		}
 		
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		//using IBO
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, objectList[i].m_Model->m_indexBuffer);
@@ -495,6 +507,9 @@ void InitResource()
 
 	textureList[7].CreateTexture("../Resources/Textures/WaterNormal.tga");
 	textureList[8].CreateTextureL("../Resources/Textures/Gradient.tga");
+	textureList[9].CreateTextureL("../Resources/Textures/Pool.tga");
+	textureList[10].CreateTextureL("../Resources/Textures/PoolNormal.tga");
+	textureList[11].CreateTexture("../Resources/Textures/PoolNormal.tga");
 }
 
 void InitObjects()
@@ -528,14 +543,15 @@ void InitObjects()
 
 	objectList[1].m_TextureCube = NULL;
 
-	objectList[1].m_NoTexture2D = 5;
-	objectList[1].m_TextureList = new CTexture[5];
+	objectList[1].m_NoTexture2D = 6;
+	objectList[1].m_TextureList = new CTexture[6];
 
 	objectList[1].m_TextureList[0] = textureList[0];
 	objectList[1].m_TextureList[1] = textureList[1];
 	objectList[1].m_TextureList[2] = textureList[2];
 	objectList[1].m_TextureList[3] = textureList[3];
 	objectList[1].m_TextureList[4] = textureList[4];
+	objectList[1].m_TextureList[5] = textureList[11];
 
 	objectList[1].pos = Vector3(0.0f, -30.0f, 0.0f);
 	objectList[1].rot = Vector3(0.0f, 0.0f, 0.0f);
@@ -562,12 +578,15 @@ void InitObjects()
 
 	objectList[3].m_TextureCube = &textureCube;
 
-	objectList[3].m_NoTexture2D = 4;
-	objectList[3].m_TextureList = new CTexture[4];
+	objectList[3].m_NoTexture2D = 7;
+	objectList[3].m_TextureList = new CTexture[7];
 	objectList[3].m_TextureList[0] = textureList[3];	//rock
 	objectList[3].m_TextureList[1] = textureList[6];	//displacement	
 	objectList[3].m_TextureList[2] = textureList[7];	//waternormal
 	objectList[3].m_TextureList[3] = textureList[8];	//HeightMap
+	objectList[3].m_TextureList[4] = textureList[9];	//Pool
+	objectList[3].m_TextureList[5] = textureList[10];	//PoolNormal
+	objectList[3].m_TextureList[6] = textureList[11];	//PoolNormal
 
 	objectList[3].pos = Vector3(-50.0f, -20.0f, 50.0f);
 	objectList[3].rot = Vector3(PI, PI/2, 0.0f);
@@ -603,5 +622,6 @@ void InitFBO(void)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	//cheat water
-	//objectList[3].m_TextureList[0].m_TextureID = textureId;
+	//objectList[3].m_TextureList[6].m_TextureID = textureId;
+	objectList[1].m_TextureList[5].m_TextureID = textureId;
 }

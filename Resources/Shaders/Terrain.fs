@@ -4,6 +4,7 @@ uniform sampler2D u_texture1;	//blend map
 uniform sampler2D u_texture2;	//Grass
 uniform sampler2D u_texture3;	//Rock
 uniform sampler2D u_texture4;	//Dirt
+uniform sampler2D u_texture5;	//water
 
 varying vec2 v_uv;
 
@@ -17,4 +18,5 @@ void main()
 	vec4 rock = texture2D(u_texture3, scaled_uv);
 	vec4 dirt = texture2D(u_texture4, scaled_uv);
 	gl_FragColor = (blendMap.r * grass + blendMap.g * rock + blendMap.b * dirt) / (blendMap.r + blendMap.g + blendMap.b);
+	//gl_FragColor = texture2D(u_texture5, v_uv);
 }
