@@ -30,6 +30,8 @@ Object3D::~Object3D(void)
 void Object3D::Update(float deltaTime)
 {
 	maTrans.SetTranslation(pos);
+	//Vector3 rot;
+	rot = m_vRotation;
 
 	maRotX.SetRotationX(rot.x);
 	maRotY.SetRotationY(rot.y);
@@ -39,4 +41,12 @@ void Object3D::Update(float deltaTime)
 	maScale.SetScale(scale);
 
 	maWorld = maScale * maRot * maTrans;
+}
+
+void Object3D::SetRotation(Vector3& rotation) {
+	m_vRotation = rotation;
+}
+
+void Object3D::Rotate(Vector3& deltaRotate) {
+	m_vRotation += deltaRotate;
 }

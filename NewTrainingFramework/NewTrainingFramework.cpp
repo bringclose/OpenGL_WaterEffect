@@ -323,10 +323,17 @@ void Update ( ESContext *esContext, float deltaTime )
 {
 	Globals::totalTime+=deltaTime;
 	myCamera.Update(deltaTime);
-
 	for(int i=0; i<NUMBER_OBJECT; i++)
 	{
 		objectList[i].Update(deltaTime);
+		if(i == 2)
+		{
+			objectList[i].Rotate(Vector3(0.00, 0.03, 0.0));
+		}
+		if(i ==3)
+		{
+			objectList[i].SetRotation(Vector3(PI, PI/2, 0.0f));
+		}
 		maWVP[i] = objectList[i].maWorld * myCamera.maView * myCamera.maProjection;
 	}
 	
@@ -571,6 +578,12 @@ void InitObjects()
 	objectList[2].pos = Vector3(-30.0f, -10.0f, 50.0f);
 	objectList[2].rot = Vector3(0.0f, 0.0f, 0.0f);
 	objectList[2].scale = Vector3(0.1f, 0.1f, 0.1f);
+
+	/*Vector3 rotation;
+	rotation.x = 0.00;
+	rotation.y = 1.00;
+	rotation.y = 0.00;
+	objectList[2].SetRotation(rotation);*/
 
 	//water
 	objectList[3].m_Model = &modelList[3];
